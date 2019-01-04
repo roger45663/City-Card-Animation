@@ -1,0 +1,541 @@
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900");
+*, *:before, *:after {
+  font-family: "Playfair Display", "Microsoft JhengHei", serif;
+  transition: 2s;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #2C2F36;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  color: white;
+}
+
+.scene {
+  width: 700px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  background: linear-gradient(#1D2B49, #1A45A0, #91cdff, #fff);
+  background-size: 100% 300%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.scene .description {
+  flex: 4;
+  padding: 20px;
+}
+.scene .description .blueBlock {
+  width: 18px;
+  height: 25px;
+  border-radius: 0;
+  background-color: #6fc5ff;
+}
+.scene .description h3, .scene .description p {
+  font-weight: normal;
+  opacity: 0.6;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+.scene .description h1 {
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+.scene .description p {
+  margin-bottom: 40px;
+}
+.scene .castle {
+  flex: 6;
+  position: relative;
+}
+.scene .castle .house1 {
+  width: 200px;
+  height: 160px;
+  border-radius: 0;
+  position: absolute;
+  bottom: 0;
+  right: 130px;
+  z-index: 2;
+  background-color: #fafaf5;
+  box-shadow: inset 0px 15px #8dc9fc, inset -75px 0px #e3e2cf;
+}
+.scene .castle .house1 .door {
+  width: 40px;
+  height: 80px;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  background-color: #2C2F36;
+  box-shadow: inset 8px 2px #7cb1ff;
+}
+.scene .castle .house2 {
+  width: 160px;
+  height: 180px;
+  border-radius: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #fafaf5;
+  box-shadow: inset -50px 0px #e3e2cf;
+  z-index: 1;
+}
+.scene .castle .house2 .window {
+  width: 35px;
+  height: 100px;
+  border-radius: 20px;
+  margin-left: 60px;
+  margin-top: 40px;
+  background-color: #e3e2cf;
+  box-shadow: inset 6px 3px #bebdaf;
+  padding-top: 5px;
+}
+.scene .castle .house2 .window .cirWin {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 8px;
+  background-color: #534d4d;
+}
+.scene .castle .house3 {
+  width: 280px;
+  height: 280px;
+  border-radius: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  z-index: 0;
+}
+.scene .castle .house3 .sWindow {
+  width: 20px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+  margin: 30px auto;
+  background-color: #2C2F36;
+}
+.scene .castle .house3 .block1, .scene .castle .house3 .block3 {
+  flex: 3;
+  background-color: #fafaf5;
+}
+.scene .castle .house3 .block1 .sWindow, .scene .castle .house3 .block3 .sWindow {
+  box-shadow: inset 8px 2px #7cb1ff;
+}
+.scene .castle .house3 .block2 {
+  flex: 4;
+  background-color: #e3e2cf;
+}
+.scene .castle .house3 .block2 .sWindow {
+  box-shadow: inset 0px 2px #7cb1ff;
+}
+.scene .castle .house3 .block3 {
+  background-color: #bebdaf;
+}
+.scene .castle .house3 .block3 .sWindow {
+  box-shadow: inset -8px 2px #7cb1ff;
+}
+.scene .castle .house3 .block1:before, .scene .castle .house3 .block2:before, .scene .castle .house3 .block3:before {
+  content: "";
+  display: block;
+  width: 105%;
+  height: 20px;
+  border-radius: 0;
+  position: absolute;
+  -webkit-transform: translate(-1%, -20px);
+          transform: translate(-1%, -20px);
+  background-color: inherit;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.scene .castle .house3 .roof {
+  width: 260px;
+  height: 125px;
+  border-radius: 130px 130px 0 0;
+  position: absolute;
+  top: -145px;
+  left: 10px;
+  background: linear-gradient(150deg, #6fc5ff, #0058ff);
+}
+.scene .castle .house3 .roof:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 15px;
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #fff;
+}
+.scene .castle .house3 .roof .cross {
+  width: 5px;
+  height: 30px;
+  border-radius: 0;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #fff;
+}
+.scene .castle .house3 .roof .cross:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 5px;
+  border-radius: 0;
+  position: absolute;
+  left: -150%;
+  top: 30%;
+  background-color: #fff;
+}
+
+.allStars {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+@-webkit-keyframes falling {
+  0%,100% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  0% {
+    -webkit-transform: translate(100px, 0px);
+            transform: translate(100px, 0px);
+  }
+  100% {
+    -webkit-transform: translate(0px, 200px);
+            transform: translate(0px, 200px);
+  }
+}
+@keyframes falling {
+  0%,100% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  0% {
+    -webkit-transform: translate(100px, 0px);
+            transform: translate(100px, 0px);
+  }
+  100% {
+    -webkit-transform: translate(0px, 200px);
+            transform: translate(0px, 200px);
+  }
+}
+.allStars [class^='star'] {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-animation: falling 2s infinite;
+          animation: falling 2s infinite;
+}
+.allStars .star1 {
+  position: absolute;
+  left: 71%;
+  top: 46%;
+  -webkit-animation-delay: -0.1s;
+          animation-delay: -0.1s;
+}
+.allStars .star2 {
+  position: absolute;
+  left: 53%;
+  top: 11%;
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+.allStars .star3 {
+  position: absolute;
+  left: 81%;
+  top: 30%;
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+.allStars .star4 {
+  position: absolute;
+  left: 47%;
+  top: 47%;
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+.allStars .star5 {
+  position: absolute;
+  left: 4%;
+  top: -23%;
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+.allStars .star6 {
+  position: absolute;
+  left: 42%;
+  top: 21%;
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+.allStars .star7 {
+  position: absolute;
+  left: 55%;
+  top: -10%;
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s;
+}
+.allStars .star8 {
+  position: absolute;
+  left: 73%;
+  top: 22%;
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
+}
+.allStars .star9 {
+  position: absolute;
+  left: 95%;
+  top: 47%;
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+}
+.allStars .star10 {
+  position: absolute;
+  left: 95%;
+  top: 31%;
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+.allStars .star11 {
+  position: absolute;
+  left: 19%;
+  top: -16%;
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+}
+.allStars .star12 {
+  position: absolute;
+  left: 92%;
+  top: 48%;
+  -webkit-animation-delay: -1.2s;
+          animation-delay: -1.2s;
+}
+.allStars .star13 {
+  position: absolute;
+  left: 23%;
+  top: -22%;
+  -webkit-animation-delay: -1.3s;
+          animation-delay: -1.3s;
+}
+.allStars .star14 {
+  position: absolute;
+  left: 35%;
+  top: 45%;
+  -webkit-animation-delay: -1.4s;
+          animation-delay: -1.4s;
+}
+.allStars .star15 {
+  position: absolute;
+  left: 77%;
+  top: -15%;
+  -webkit-animation-delay: -1.5s;
+          animation-delay: -1.5s;
+}
+.allStars .star16 {
+  position: absolute;
+  left: 42%;
+  top: 26%;
+  -webkit-animation-delay: -1.6s;
+          animation-delay: -1.6s;
+}
+.allStars .star17 {
+  position: absolute;
+  left: 97%;
+  top: 4%;
+  -webkit-animation-delay: -1.7s;
+          animation-delay: -1.7s;
+}
+.allStars .star18 {
+  position: absolute;
+  left: 16%;
+  top: 27%;
+  -webkit-animation-delay: -1.8s;
+          animation-delay: -1.8s;
+}
+.allStars .star19 {
+  position: absolute;
+  left: 75%;
+  top: 36%;
+  -webkit-animation-delay: -1.9s;
+          animation-delay: -1.9s;
+}
+.allStars .star20 {
+  position: absolute;
+  left: 77%;
+  top: 16%;
+  -webkit-animation-delay: -2s;
+          animation-delay: -2s;
+}
+.allStars .star21 {
+  position: absolute;
+  left: 70%;
+  top: 47%;
+  -webkit-animation-delay: -2.1s;
+          animation-delay: -2.1s;
+}
+.allStars .star22 {
+  position: absolute;
+  left: 96%;
+  top: 32%;
+  -webkit-animation-delay: -2.2s;
+          animation-delay: -2.2s;
+}
+.allStars .star23 {
+  position: absolute;
+  left: 74%;
+  top: -25%;
+  -webkit-animation-delay: -2.3s;
+          animation-delay: -2.3s;
+}
+.allStars .star24 {
+  position: absolute;
+  left: 54%;
+  top: 39%;
+  -webkit-animation-delay: -2.4s;
+          animation-delay: -2.4s;
+}
+.allStars .star25 {
+  position: absolute;
+  left: 76%;
+  top: 20%;
+  -webkit-animation-delay: -2.5s;
+          animation-delay: -2.5s;
+}
+.allStars .star26 {
+  position: absolute;
+  left: 65%;
+  top: -5%;
+  -webkit-animation-delay: -2.6s;
+          animation-delay: -2.6s;
+}
+.allStars .star27 {
+  position: absolute;
+  left: 73%;
+  top: 46%;
+  -webkit-animation-delay: -2.7s;
+          animation-delay: -2.7s;
+}
+.allStars .star28 {
+  position: absolute;
+  left: 27%;
+  top: 24%;
+  -webkit-animation-delay: -2.8s;
+          animation-delay: -2.8s;
+}
+.allStars .star29 {
+  position: absolute;
+  left: 46%;
+  top: 2%;
+  -webkit-animation-delay: -2.9s;
+          animation-delay: -2.9s;
+}
+.allStars .star30 {
+  position: absolute;
+  left: 70%;
+  top: -16%;
+  -webkit-animation-delay: -3s;
+          animation-delay: -3s;
+}
+
+.dayText {
+  display: none;
+}
+
+.remind {
+  opacity: 0.6;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.sun, .moon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  left: 250px;
+  top: 100px;
+}
+
+.sun {
+  background-color: #f6ff05;
+  box-shadow: 0px 0px 20px rgba(246, 255, 5, 0.3);
+  top: 400px;
+  opacity: 0;
+}
+
+.moon {
+  -webkit-animation: moonAppear 5s both;
+          animation: moonAppear 5s both;
+}
+
+@-webkit-keyframes moonAppear {
+  0% {
+    box-shadow: inset 0px 0px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: inset 10px -10px rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes moonAppear {
+  0% {
+    box-shadow: inset 0px 0px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: inset 10px -10px rgba(255, 255, 255, 0.9);
+  }
+}
+input:checked + .scene {
+  background-position: 0 100%;
+  color: #222;
+}
+input:checked + .scene .nightText {
+  display: none;
+}
+input:checked + .scene .dayText {
+  display: block;
+}
+input:checked + .scene .allStars {
+  opacity: 0;
+}
+input:checked + .scene .castle {
+  -webkit-filter: brightness(105%);
+          filter: brightness(105%);
+}
+input:checked + .scene .moon {
+  top: -100px;
+  opacity: 0;
+}
+input:checked + .scene .sun {
+  top: 100px;
+  opacity: 1;
+}
+input:checked + .scene .blueBlock {
+  background-color: #fff;
+}
+
+input {
+  display: none;
+}

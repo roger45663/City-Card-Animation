@@ -1,0 +1,14 @@
+{
+  "name": "city-card-animation",
+  "version": "1.0.0",
+  "description": "City Card Animation",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "Pei-Ting Lin",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  }
+}

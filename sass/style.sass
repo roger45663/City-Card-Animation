@@ -1,0 +1,247 @@
+$colorBlueRoofLight: #6fc5ff
+$colorBlueRoofDark: #0058ff
+
+$colorGreyLight: #fafaf5
+$colorGreyNormal: #e3e2cf
+$colorGreyDark: #bebdaf
+$colorBackground: #2C2F36
+
+$colorShadowBlue: #7cb1ff
+$colorShadowBlueLight: #8dc9fc
+
+$colorWindowGrey: #534d4d
+
+$roofGradient: linear-gradient(150deg,$colorBlueRoofLight,$colorBlueRoofDark)
+$sceneGradient: linear-gradient(#1D2B49,#1A45A0,#91cdff,#fff)
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900')
+
+@mixin size($w,$h:$w,$bdrs:0)
+  width: $w
+  height: $h
+  border-radius: $bdrs
+
+@mixin flex($j:center,$a:center)
+  display: flex
+  justify-content: $j
+  align-items: $a
+  
+@mixin abpos($l:initial,$t:initial)
+  position: absolute
+  left: $l
+  top: $t
+
+@mixin shadow($size)
+  box-shadow: inset $size 2px $colorShadowBlue  
+  
+*,*:before,*:after
+  font-family: 'Playfair Display','Microsoft JhengHei',serif
+  transition: 2s
+  // border: 1px solid black
+  
+
+html,body
+  margin: 0
+  padding: 0
+  background-color: $colorBackground
+  display: flex
+  +flex
+  +size(100%)
+  color: white
+
+.scene
+  +size(700px,500px,10px)
+  display: flex
+  overflow: hidden
+  background: $sceneGradient
+  background-size: 100% 300%
+  box-shadow: 0 0 30px rgba(black,0.3)
+  position: relative
+  .description
+    flex: 4
+    padding: 20px
+    .blueBlock
+      +size(18px,25px)
+      background-color: $colorBlueRoofLight
+    h3,p
+      font-weight: normal
+      opacity: 0.6
+      letter-spacing: 1px
+      font-size: 15px
+    h1
+      font-weight: normal
+      letter-spacing: 2px
+      margin-bottom: 40px
+    p
+      margin-bottom: 40px
+  .castle
+    flex: 6
+    position: relative
+    .house1
+      +size(200px,160px)
+      position: absolute
+      bottom: 0
+      right: 130px
+      z-index: 2
+      background-color: $colorGreyLight
+      box-shadow: inset 0px 15px $colorShadowBlueLight,inset -75px 0px $colorGreyNormal
+      
+      .door
+        +size(40px,80px,20px 20px 0 0)
+        position: absolute
+        bottom: 0
+        left: 50px
+        background-color: $colorBackground
+        box-shadow: inset 8px 2px $colorShadowBlue
+    .house2
+      +size(160px,180px)
+      position: absolute
+      bottom: 0
+      right: 0
+      background-color: $colorGreyLight
+      box-shadow: inset -50px 0px $colorGreyNormal
+      z-index: 1
+      .window
+        +size(35px,100px,20px)
+        margin-left: 60px
+        margin-top: 40px
+        background-color: $colorGreyNormal
+        box-shadow: inset 6px 3px $colorGreyDark
+        padding-top: 5px
+        .cirWin
+          +size(20px,20px,50%)
+          margin: 8px
+          background-color: $colorWindowGrey
+    .house3
+      +size(280px,280px)
+      position: absolute
+      bottom: 0
+      right: 0
+      display: flex
+      z-index: 0
+      .sWindow
+        +size(20px,50px,10px 10px 0 0)
+        margin: 30px auto
+        background-color: $colorBackground
+    
+      .block1,.block3
+        flex: 3
+        background-color: $colorGreyLight
+        .sWindow
+          +shadow(8px)
+      .block2
+        flex: 4
+        background-color: $colorGreyNormal
+        .sWindow
+          +shadow(0px)
+      .block3
+        background-color: $colorGreyDark
+        .sWindow
+          +shadow(-8px)
+      .block1,.block2,.block3
+        &:before
+          content: ""
+          display: block
+          +size(105%,20px)
+          position: absolute
+          transform: translate(-1%,-20px)
+          background-color: inherit
+          box-shadow: 0px 0px 20px rgba(black,0.1)
+      .roof
+        +size(260px,125px,130px 130px 0 0)
+        position: absolute
+        top: -145px
+        left: 10px
+        background: $roofGradient
+        &:before
+          content: ""
+          display: block
+          +size(20px,15px,10px 10px 0 0)
+          position: absolute
+          top: -15px
+          left: 50%
+          transform: translateX(-50%)
+          background-color: #fff
+        .cross
+          +size(5px,30px)
+          position: absolute
+          top: -45px
+          left: 50%
+          transform: translateX(-50%)
+          background-color: #fff
+          &:before
+            content: ""
+            display: block
+            +size(20px,5px)
+            +abpos(-150%,30%)
+            background-color: #fff
+            
+.allStars
+  +size(100%)
+  +abpos(0,0)
+  @keyframes falling
+    0%,100%
+      opacity: 0
+    70%
+      opacity: 1
+    0%
+      transform: translate(100px,0px)
+    100%
+      transform: translate(0px,200px)
+  [class^='star']
+    +size(3px,3px,50%)
+    background-color: #fff
+    animation: falling 2s infinite
+  @for $i from 1 through 30
+    .star#{$i}
+      $posX: random(100)*1%
+      $posY: random(80)*-1% + 50%
+      +abpos($posX,$posY)
+      animation-delay: $i*-0.1s
+      
+.dayText
+  display: none
+
+.remind
+  opacity: 0.6
+  letter-spacing: 2px
+  margin-bottom: 10px
+.sun,.moon
+  +size(50px,50px,50%)
+  +abpos(250px,100px)
+.sun
+  background-color: #f6ff05
+  box-shadow: 0px 0px 20px rgba(#f6ff05,0.3)
+  top: 400px
+  opacity: 0
+.moon
+  animation: moonAppear 5s both
+
+@keyframes moonAppear
+  0%
+    box-shadow: inset 0px 0px rgba(#fff,0.9)
+  100%
+    box-shadow: inset 10px -10px rgba(#fff,0.9)
+
+input:checked+.scene
+  background-position: 0 100%
+  color: #222
+  .nightText
+    display: none
+  .dayText
+    display: block
+  .allStars
+    opacity: 0
+  .castle
+    filter: brightness(105%)
+  .moon
+    top: -100px
+    opacity: 0
+  .sun
+    top: 100px
+    opacity: 1
+  .blueBlock
+    background-color: #fff
+input
+  display: none
+  
